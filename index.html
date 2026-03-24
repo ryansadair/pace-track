@@ -36,194 +36,185 @@
   .app {
     max-width: 430px;
     margin: 0 auto;
-    padding: 0 0 120px 0;
+    padding: 0 0 80px 0;
     min-height: 100dvh;
   }
 
   /* ── Header ── */
   .header {
-    padding: 52px 20px 16px;
+    padding: 48px 16px 10px;
     position: sticky;
     top: 0;
     z-index: 10;
-    background: linear-gradient(to bottom, var(--bg) 82%, transparent);
+    background: linear-gradient(to bottom, var(--bg) 85%, transparent);
   }
-  .header-top { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
-  .logo { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--accent); letter-spacing: -0.5px; }
+  .header-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 2px; }
+  .logo { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--accent); letter-spacing: -0.5px; }
   .logo span { color: var(--text); }
-  .subtitle { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .subtitle { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
-  /* ── Section label ── */
-  .section-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .section-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
 
   /* ── Target Pace ── */
-  .target-section { padding: 0 20px 20px; }
-  .target-row { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; }
-  .target-label { font-size: 12px; color: var(--muted); flex: 1; }
-  .pace-inputs { display: flex; align-items: center; gap: 6px; }
+  .target-section { padding: 0 16px 12px; }
+  .target-row {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 14px;
+  }
+  .target-label { font-size: 11px; color: var(--muted); flex: 1; }
+  .pace-inputs { display: flex; align-items: center; gap: 5px; }
   .pace-input {
-    background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
-    color: var(--accent); font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 500;
-    text-align: center; width: 52px; padding: 8px 4px;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 7px;
+    color: var(--accent); font-family: 'DM Mono', monospace; font-size: 19px; font-weight: 500;
+    text-align: center; width: 48px; padding: 6px 2px;
     -webkit-appearance: none; appearance: none; outline: none;
   }
-  .pace-input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(232,255,71,.15); }
-  .pace-sep { color: var(--accent); font-size: 22px; font-weight: 500; }
-  .pace-unit { font-size: 11px; color: var(--muted); margin-left: 2px; }
-
-  /* ── Race Tabs ── */
-  .race-tabs { display: flex; gap: 8px; padding: 0 20px 20px; }
-  .race-tab {
-    flex: 1; padding: 10px 6px; background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 11px;
-    font-weight: 500; letter-spacing: 0.05em; cursor: pointer; text-align: center;
-    transition: all .15s ease; -webkit-appearance: none; appearance: none; outline: none;
-  }
-  .race-tab.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .pace-input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(232,255,71,.12); }
+  .pace-sep { color: var(--accent); font-size: 20px; font-weight: 500; }
+  .pace-unit { font-size: 10px; color: var(--muted); margin-left: 2px; }
 
   /* ── Miles section ── */
-  .miles-section { padding: 0 20px 20px; }
-  .miles-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-  .clear-btn { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: color .15s; }
+  .miles-section { padding: 0 16px 12px; }
+  .miles-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .clear-btn { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; padding: 3px 6px; border-radius: 5px; }
   .clear-btn:active { color: var(--accent3); }
-  .mile-rows { display: flex; flex-direction: column; gap: 8px; }
+  .mile-rows { display: flex; flex-direction: column; gap: 6px; }
 
   /* ── Mile card ── */
   .mile-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: 11px;
     overflow: hidden;
-    animation: slideIn .2s ease;
+    animation: slideIn .18s ease;
   }
-  @keyframes slideIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes slideIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
 
   .mile-card-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 14px;
+    padding: 9px 12px;
     cursor: pointer;
     user-select: none;
   }
 
-  .mile-num { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-  .mile-pace-preview { font-size: 20px; font-weight: 500; color: var(--accent2); letter-spacing: .02em; }
-  .mile-pace-preview.empty { color: var(--muted); font-size: 13px; }
+  .mile-num { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; min-width: 44px; }
+  .mile-pace-preview { font-size: 18px; font-weight: 500; color: var(--accent2); letter-spacing: .02em; }
 
   .mile-del {
-    background: none; border: none; color: var(--muted); font-size: 22px; cursor: pointer;
-    padding: 2px 6px; border-radius: 6px; transition: color .15s; line-height: 1;
+    background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer;
+    padding: 1px 5px; border-radius: 5px; line-height: 1;
   }
   .mile-del:active { color: var(--accent3); }
 
   /* ── Drum picker ── */
   .drum-wrap {
     display: none;
-    padding: 8px 14px 18px;
+    padding: 6px 14px 14px;
     border-top: 1px solid var(--border);
     background: var(--surface2);
     justify-content: center;
     align-items: center;
-    gap: 0;
   }
   .drum-wrap.open { display: flex; }
 
-  .drum-label { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 6px; }
+  .drum-label { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 5px; }
 
   .drum-outer {
     position: relative;
-    width: 88px;
+    width: 84px;
     height: calc(var(--item-h) * 3);
     overflow: hidden;
     cursor: grab;
     border-radius: 10px;
   }
   .drum-outer:active { cursor: grabbing; }
-
   .drum-outer::before, .drum-outer::after {
-    content: '';
-    position: absolute; left: 0; right: 0; z-index: 2; pointer-events: none;
+    content: ''; position: absolute; left: 0; right: 0; z-index: 2; pointer-events: none;
     height: var(--item-h);
   }
   .drum-outer::before { top: 0; background: linear-gradient(to bottom, var(--surface2) 5%, transparent); }
-  .drum-outer::after  { bottom: 0; background: linear-gradient(to top,   var(--surface2) 5%, transparent); }
+  .drum-outer::after  { bottom: 0; background: linear-gradient(to top, var(--surface2) 5%, transparent); }
 
   .drum-selector {
-    position: absolute;
-    top: var(--item-h);
-    left: 8px; right: 8px;
-    height: var(--item-h);
-    border-top: 1px solid rgba(71,201,255,.35);
-    border-bottom: 1px solid rgba(71,201,255,.35);
-    background: rgba(71,201,255,.06);
-    border-radius: 8px;
-    pointer-events: none;
-    z-index: 1;
+    position: absolute; top: var(--item-h); left: 8px; right: 8px; height: var(--item-h);
+    border-top: 1px solid rgba(71,201,255,.35); border-bottom: 1px solid rgba(71,201,255,.35);
+    background: rgba(71,201,255,.06); border-radius: 8px; pointer-events: none; z-index: 1;
   }
 
-  .drum-list {
-    display: flex;
-    flex-direction: column;
-    will-change: transform;
-  }
+  .drum-list { display: flex; flex-direction: column; will-change: transform; }
 
   .drum-item {
-    height: var(--item-h);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 26px;
-    font-weight: 500;
-    color: var(--muted);
-    flex-shrink: 0;
-    user-select: none;
+    height: var(--item-h); display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 26px; font-weight: 500;
+    color: var(--muted); flex-shrink: 0; user-select: none;
     transition: color .08s, transform .08s;
   }
   .drum-item.selected { color: var(--text); transform: scale(1.12); }
 
-  .drum-colon {
-    font-size: 30px; font-weight: 500; color: var(--muted);
-    padding: 0 2px;
-    align-self: center;
-    margin-top: 18px;
-  }
-
+  .drum-colon { font-size: 28px; font-weight: 500; color: var(--muted); padding: 0 2px; align-self: center; margin-top: 16px; }
   .drum-col { display: flex; flex-direction: column; align-items: center; }
 
   /* ── Add mile ── */
   .add-mile-btn {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    width: 100%; padding: 14px;
-    background: none; border: 1px dashed var(--border); border-radius: 12px;
-    color: var(--muted); font-family: 'DM Mono', monospace; font-size: 13px;
-    cursor: pointer; transition: all .15s ease; margin-top: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    width: 100%; padding: 11px;
+    background: none; border: 1px dashed var(--border); border-radius: 10px;
+    color: var(--muted); font-family: 'DM Mono', monospace; font-size: 12px;
+    cursor: pointer; margin-top: 6px;
     -webkit-appearance: none; appearance: none; outline: none;
   }
   .add-mile-btn:active { border-color: var(--accent); color: var(--accent); }
 
   /* ── Results ── */
-  .results-section { padding: 0 20px; }
-  .results-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-  .results-header { padding: 14px 16px 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .results-title { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-  .avg-badge { font-size: 12px; color: var(--text); }
+  .results-section { padding: 0 16px; }
+  .results-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+
+  .results-header {
+    padding: 9px 14px 8px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .results-title { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .avg-badge { font-size: 11px; color: var(--text); }
   .avg-badge .avg-val { color: var(--accent2); font-weight: 500; }
-  .race-result { padding: 14px 16px; border-bottom: 1px solid var(--border); }
-  .race-result:last-child { border-bottom: none; }
-  .race-result-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
-  .race-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); }
-  .race-dist { font-size: 10px; color: var(--muted); letter-spacing: .06em; }
-  .race-stats { display: flex; gap: 16px; flex-wrap: wrap; }
-  .stat-block { flex: 1; min-width: 80px; }
-  .stat-label { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
-  .stat-val { font-size: 18px; font-weight: 500; line-height: 1; }
-  .stat-val.good { color: var(--green); }
-  .stat-val.warn { color: var(--accent); }
-  .stat-val.bad  { color: var(--accent3); }
-  .stat-val.neutral { color: var(--accent2); }
-  .req-pace-detail { font-size: 10px; color: var(--muted); margin-top: 3px; }
-  .no-data { padding: 28px 16px; text-align: center; color: var(--muted); font-size: 12px; line-height: 1.8; }
-  .progress-bar-wrap { margin-top: 8px; height: 3px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
-  .progress-bar-fill { height: 100%; border-radius: 2px; transition: width .4s ease; }
-  .complete-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--green); background: rgba(77,255,145,.1); border: 1px solid rgba(77,255,145,.25); border-radius: 20px; padding: 3px 9px; }
+
+  /* ── Distance rows (compact single-line) ── */
+  .dist-row {
+    display: flex; align-items: center;
+    padding: 7px 14px;
+    border-bottom: 1px solid var(--border);
+    gap: 6px;
+  }
+  .dist-row:last-child { border-bottom: none; }
+  .dist-row.dimmed { opacity: 0.38; }
+
+  .dist-label {
+    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+    color: var(--text); min-width: 36px;
+  }
+  .dist-sub { font-size: 9px; color: var(--muted); min-width: 28px; }
+
+  .dist-req { font-size: 16px; font-weight: 500; min-width: 56px; }
+  .dist-req.good   { color: var(--green); }
+  .dist-req.warn   { color: var(--accent); }
+  .dist-req.bad    { color: var(--accent3); }
+  .dist-req.neutral { color: var(--muted); }
+
+  .dist-spacer { flex: 1; }
+
+  .dist-proj { font-size: 11px; color: var(--muted); text-align: right; }
+  .dist-proj span { color: var(--text); }
+
+  .dist-done {
+    font-size: 9px; letter-spacing: .07em; text-transform: uppercase;
+    color: var(--green); background: rgba(77,255,145,.1);
+    border: 1px solid rgba(77,255,145,.22); border-radius: 20px; padding: 2px 7px;
+  }
+
+  .progress-bar-wrap { height: 2px; background: var(--surface2); flex-shrink: 0; width: 40px; border-radius: 2px; overflow: hidden; align-self: center; }
+  .progress-bar-fill { height: 100%; border-radius: 2px; }
+
+  .no-data { padding: 22px 14px; text-align: center; color: var(--muted); font-size: 11px; line-height: 1.8; }
 </style>
 </head>
 <body>
@@ -235,9 +226,9 @@
   </div>
 
   <div class="target-section">
-    <div class="section-label">Target Pace (min/mile)</div>
+    <div class="section-label">Goal pace</div>
     <div class="target-row">
-      <div class="target-label">Goal pace</div>
+      <div class="target-label">Target min/mile</div>
       <div class="pace-inputs">
         <input class="pace-input" id="tgt-min" type="number" min="4" max="20" value="9" inputmode="numeric">
         <span class="pace-sep">:</span>
@@ -247,13 +238,6 @@
     </div>
   </div>
 
-  <div class="race-tabs">
-    <button class="race-tab active" onclick="setRace('5k',this)">5K</button>
-    <button class="race-tab" onclick="setRace('10k',this)">10K</button>
-    <button class="race-tab" onclick="setRace('half',this)">Half</button>
-    <button class="race-tab" onclick="setRace('all',this)" style="flex:1.4">All 3</button>
-  </div>
-
   <div class="miles-section">
     <div class="miles-header">
       <div class="section-label">Miles completed</div>
@@ -261,31 +245,26 @@
     </div>
     <div class="mile-rows" id="mile-rows"></div>
     <button class="add-mile-btn" onclick="addMile()">
-      <span style="font-size:18px;line-height:1">+</span> Log mile
+      <span style="font-size:16px;line-height:1">+</span> Log mile
     </button>
   </div>
 
   <div class="results-section">
-    <div class="section-label" style="margin-bottom:10px">Pace required for remaining miles</div>
+    <div class="section-label" style="margin-bottom:8px">Required pace by distance</div>
     <div class="results-card" id="results-card">
       <div class="no-data">Log your first mile<br>to see required pace</div>
     </div>
   </div>
-</div>
 
+</div>
 <script>
-// ─── Data ───────────────────────────────────────────────────────────────────
-const RACES = {
-  '5k':   { label: '5K',            dist: 3.1069  },
-  '10k':  { label: '10K',           dist: 6.2137  },
-  'half': { label: 'Half Marathon', dist: 13.1094 },
-};
+// ─── Distances: 2 through 13 miles ──────────────────────────────────────────
+const DISTANCES = Array.from({length: 12}, (_, i) => i + 2); // [2,3,...,13]
 
 const MINS = Array.from({length: 17}, (_, i) => i + 4); // 4–20
 const SECS = Array.from({length: 60}, (_, i) => i);     // 0–59
 
-let selectedRace = '5k';
-let miles = [];      // [{ min: number, sec: number }]
+let miles = [];
 let openCardIdx = null;
 
 // ─── Drum builder ────────────────────────────────────────────────────────────
@@ -304,7 +283,6 @@ function buildDrum(values, initialVal, onChange) {
   list.className = 'drum-list';
   list.style.transform = 'translateY(0px)';
 
-  // blank padding items
   const blankTop = document.createElement('div');
   blankTop.className = 'drum-item';
   list.appendChild(blankTop);
@@ -330,39 +308,25 @@ function buildDrum(values, initialVal, onChange) {
     currentIdx = idx;
     list.style.transition = animate ? 'transform .15s cubic-bezier(.25,.46,.45,.94)' : 'none';
     list.style.transform = `translateY(${-idx * ITEM_H}px)`;
-    if (!animate) {
-      // force reflow so transition removal is applied before next frame
-      list.getBoundingClientRect();
-    }
+    if (!animate) list.getBoundingClientRect();
     items.forEach((it, i) => it.el.classList.toggle('selected', i === idx));
     onChange(values[idx]);
   }
 
-  // initialise without animation
-  snapTo(currentIdx, false);
-
-  // ── touch/mouse drag ──
   let dragStartY = 0, dragStartIdx = 0, dragging = false;
   let lastY = 0, lastT = 0, velY = 0;
 
   function startDrag(y) {
-    dragging = true;
-    dragStartY = y;
-    dragStartIdx = currentIdx;
+    dragging = true; dragStartY = y; dragStartIdx = currentIdx;
     lastY = y; lastT = performance.now(); velY = 0;
     list.style.transition = 'none';
   }
-
   function moveDrag(y) {
     if (!dragging) return;
-    const now = performance.now();
-    const dt = now - lastT;
+    const now = performance.now(), dt = now - lastT;
     if (dt > 0) velY = (y - lastY) / dt;
     lastY = y; lastT = now;
-
-    const delta = dragStartY - y;
-    const rawIdx = dragStartIdx + delta / ITEM_H;
-    const idx = Math.max(0, Math.min(values.length - 1, Math.round(rawIdx)));
+    const idx = Math.max(0, Math.min(values.length - 1, Math.round(dragStartIdx + (dragStartY - y) / ITEM_H)));
     if (idx !== currentIdx) {
       currentIdx = idx;
       list.style.transform = `translateY(${-idx * ITEM_H}px)`;
@@ -371,14 +335,10 @@ function buildDrum(values, initialVal, onChange) {
       try { if (navigator.vibrate) navigator.vibrate(3); } catch(e) {}
     }
   }
-
   function endDrag() {
     if (!dragging) return;
     dragging = false;
-    // momentum flick
-    const momentum = -velY * 120;
-    const targetIdx = Math.round(currentIdx + momentum / ITEM_H);
-    snapTo(targetIdx, true);
+    snapTo(Math.round(currentIdx + (-velY * 120) / ITEM_H), true);
   }
 
   outer.addEventListener('touchstart',  e => startDrag(e.touches[0].clientY), {passive:true});
@@ -393,10 +353,11 @@ function buildDrum(values, initialVal, onChange) {
     snapTo(currentIdx + (e.deltaY > 0 ? 1 : -1), true);
   }, {passive:false});
 
+  snapTo(currentIdx, false);
   return outer;
 }
 
-// ─── Mile card rendering ─────────────────────────────────────────────────────
+// ─── Mile cards ──────────────────────────────────────────────────────────────
 function previewStr(m) {
   return `${m.min}:${String(m.sec).padStart(2,'0')}`;
 }
@@ -409,7 +370,6 @@ function renderMiles() {
     const card = document.createElement('div');
     card.className = 'mile-card';
 
-    // ── header ──
     const header = document.createElement('div');
     header.className = 'mile-card-header';
 
@@ -431,7 +391,6 @@ function renderMiles() {
     header.appendChild(delBtn);
     card.appendChild(header);
 
-    // ── drum wrap ──
     const drumWrap = document.createElement('div');
     drumWrap.className = 'drum-wrap' + (openCardIdx === i ? ' open' : '');
 
@@ -444,8 +403,7 @@ function renderMiles() {
       minCol.appendChild(minLbl);
       minCol.appendChild(buildDrum(MINS, m.min, val => {
         miles[i].min = val;
-        const p = card.querySelector('.mile-pace-preview');
-        p.textContent = `${previewStr(miles[i])} /mi`;
+        card.querySelector('.mile-pace-preview').textContent = `${previewStr(miles[i])} /mi`;
         renderResults();
       }));
 
@@ -461,8 +419,7 @@ function renderMiles() {
       secCol.appendChild(secLbl);
       secCol.appendChild(buildDrum(SECS, m.sec, val => {
         miles[i].sec = val;
-        const p = card.querySelector('.mile-pace-preview');
-        p.textContent = `${previewStr(miles[i])} /mi`;
+        card.querySelector('.mile-pace-preview').textContent = `${previewStr(miles[i])} /mi`;
         renderResults();
       }));
 
@@ -472,21 +429,18 @@ function renderMiles() {
     }
 
     card.appendChild(drumWrap);
-
     header.addEventListener('click', () => {
       openCardIdx = (openCardIdx === i) ? null : i;
       renderMiles();
     });
-
     container.appendChild(card);
   });
 
   renderResults();
 }
 
-// ─── Mile CRUD ───────────────────────────────────────────────────────────────
+// ─── CRUD ────────────────────────────────────────────────────────────────────
 function addMile() {
-  // default to target pace or 9:00
   const tMin = parseInt(document.getElementById('tgt-min').value) || 9;
   const tSec = parseInt(document.getElementById('tgt-sec').value) || 0;
   miles.push({ min: tMin, sec: tSec });
@@ -494,60 +448,46 @@ function addMile() {
   renderMiles();
   setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 80);
 }
-
 function deleteMile(idx) {
   miles.splice(idx, 1);
   if (openCardIdx === idx) openCardIdx = null;
   else if (openCardIdx > idx) openCardIdx--;
   renderMiles();
 }
-
 function clearAll() {
-  miles = [];
-  openCardIdx = null;
-  renderMiles();
-}
-
-// ─── Race selector ───────────────────────────────────────────────────────────
-function setRace(race, btn) {
-  selectedRace = race;
-  document.querySelectorAll('.race-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderResults();
+  miles = []; openCardIdx = null; renderMiles();
 }
 
 // ─── Pace math ───────────────────────────────────────────────────────────────
 function paceToSecs(min, sec) { return (parseInt(min)||0)*60 + (parseInt(sec)||0); }
 function secsToStr(s) {
   if (!isFinite(s) || s <= 0) return '--:--';
-  const m = Math.floor(s/60), sec = Math.round(s%60);
-  return `${m}:${String(sec).padStart(2,'0')}`;
+  return `${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`;
 }
 function getTargetSecs() {
   return paceToSecs(document.getElementById('tgt-min').value, document.getElementById('tgt-sec').value);
 }
 
-function calcRaceResult(raceDist) {
+function calcForDist(dist) {
   const valid = miles.filter(m => paceToSecs(m.min, m.sec) > 0);
   if (!valid.length) return null;
   const elapsed = valid.reduce((s,m) => s + paceToSecs(m.min, m.sec), 0);
   const avg = elapsed / valid.length;
-  const rem = raceDist - valid.length;
-  const totalTgt = getTargetSecs() * raceDist;
-  const budget = totalTgt - elapsed;
-  const req = rem > 0 ? budget / rem : null;
+  const rem = dist - valid.length;
+  const tgt = getTargetSecs();
+  const req = rem > 0 ? (tgt * dist - elapsed) / rem : null;
   return {
-    avgPaceSecs: avg,
-    reqPaceSecs: req,
-    milesRemaining: Math.max(rem, 0),
-    finishIfCurrent: elapsed + avg * Math.max(rem, 0),
-    totalTargetSecs: totalTgt,
-    percentDone: Math.min((valid.length / raceDist) * 100, 100),
-    isComplete: valid.length >= Math.ceil(raceDist),
+    avg, req,
+    rem: Math.max(rem, 0),
+    proj: elapsed + avg * Math.max(rem, 0),
+    tgtTotal: tgt * dist,
+    pct: Math.min((valid.length / dist) * 100, 100),
+    done: valid.length >= dist,
+    ahead: rem <= 0,
   };
 }
 
-function paceStatus(req, tgt) {
+function statusClass(req, tgt) {
   if (req === null) return 'neutral';
   const d = req - tgt;
   if (d <= -30) return 'bad';
@@ -555,69 +495,58 @@ function paceStatus(req, tgt) {
   return 'good';
 }
 
-function renderRaceBlock(key) {
-  const race = RACES[key];
-  const res = calcRaceResult(race.dist);
-  if (!res) return '';
-  const tgt = getTargetSecs();
-  const status = paceStatus(res.reqPaceSecs, tgt);
-  const barColor = status === 'good' ? 'var(--green)' : status === 'warn' ? 'var(--accent)' : 'var(--accent3)';
-  const diff = res.reqPaceSecs !== null ? res.reqPaceSecs - tgt : 0;
-  const note = res.reqPaceSecs === null ? '' :
-    Math.abs(diff) <= 5 ? 'right on target' :
-    diff > 0 ? `${secsToStr(diff)} slower than goal` :
-               `${secsToStr(-diff)} faster needed`;
-  const remLabel = res.milesRemaining > 0 ? `${res.milesRemaining.toFixed(1)} mi left` : 'done!';
-  const doneBadge = res.isComplete ? `<span class="complete-badge">✓ complete</span>` : '';
-  return `
-    <div class="race-result">
-      <div class="race-result-header">
-        <div class="race-name">${race.label}</div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <div class="race-dist">${race.dist.toFixed(2)} mi · ${remLabel}</div>${doneBadge}
-        </div>
-      </div>
-      <div class="race-stats">
-        <div class="stat-block">
-          <div class="stat-label">Req. pace</div>
-          <div class="stat-val ${status}">${secsToStr(res.reqPaceSecs)}</div>
-          <div class="req-pace-detail">${note}</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-label">Current avg</div>
-          <div class="stat-val neutral">${secsToStr(res.avgPaceSecs)}</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-label">Proj. finish</div>
-          <div class="stat-val" style="color:var(--text)">${secsToStr(res.finishIfCurrent)}</div>
-          <div class="req-pace-detail">goal: ${secsToStr(res.totalTargetSecs)}</div>
-        </div>
-      </div>
-      <div class="progress-bar-wrap">
-        <div class="progress-bar-fill" style="width:${res.percentDone}%;background:${barColor}"></div>
-      </div>
-    </div>`;
-}
-
+// ─── Results ─────────────────────────────────────────────────────────────────
 function renderResults() {
   const card = document.getElementById('results-card');
   const valid = miles.filter(m => paceToSecs(m.min, m.sec) > 0);
+
   if (!valid.length) {
     card.innerHTML = '<div class="no-data">Log your first mile<br>to see required pace</div>';
     return;
   }
+
   const totalSecs = valid.reduce((s,m) => s + paceToSecs(m.min,m.sec), 0);
   const avgStr = secsToStr(totalSecs / valid.length);
+  const completedCount = valid.length;
+
   let html = `
     <div class="results-header">
-      <div class="results-title">Required splits</div>
+      <div class="results-title">Req. pace / distance</div>
       <div class="avg-badge">Avg <span class="avg-val">${avgStr}/mi</span></div>
     </div>`;
-  if (selectedRace === 'all') {
-    html += renderRaceBlock('5k') + renderRaceBlock('10k') + renderRaceBlock('half');
-  } else {
-    html += renderRaceBlock(selectedRace);
-  }
+
+  DISTANCES.forEach(dist => {
+    const res = calcForDist(dist);
+    if (!res) return;
+
+    const tgt = getTargetSecs();
+    const sc = statusClass(res.req, tgt);
+    const barColor = sc === 'good' ? 'var(--green)' : sc === 'warn' ? 'var(--accent)' : sc === 'bad' ? 'var(--accent3)' : 'var(--muted)';
+
+    // dim rows that are already complete or not yet reachable
+    const isDimmed = res.done;
+    const dimClass = isDimmed ? ' dimmed' : '';
+
+    const reqDisplay = res.ahead ? '✓' : secsToStr(res.req);
+    const reqClass = res.ahead ? 'good' : sc;
+
+    html += `
+      <div class="dist-row${dimClass}">
+        <div class="dist-label">${dist} mi</div>
+        <div class="dist-req ${reqClass}">${reqDisplay}</div>
+        <div class="dist-spacer"></div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" style="width:${res.pct}%;background:${barColor}"></div>
+        </div>
+        <div class="dist-proj">
+          ${res.done
+            ? `<span class="dist-done">done</span>`
+            : `proj <span>${secsToStr(res.proj)}</span>`
+          }
+        </div>
+      </div>`;
+  });
+
   card.innerHTML = html;
 }
 
