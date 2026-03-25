@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Pace Tracker</title>
+<title>Average Pace</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@700;800&display=swap');
 
@@ -215,13 +215,26 @@
   .progress-bar-fill { height: 100%; border-radius: 2px; }
 
   .no-data { padding: 22px 14px; text-align: center; color: var(--muted); font-size: 11px; line-height: 1.8; }
+
+  /* ── Confirm button ── */
+  .confirm-btn {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    width: calc(100% - 28px); margin: 0 14px 14px;
+    padding: 11px;
+    background: var(--accent); border: none; border-radius: 9px;
+    color: var(--bg); font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500;
+    cursor: pointer; letter-spacing: .04em;
+    -webkit-appearance: none; appearance: none; outline: none;
+  }
+  .confirm-btn:active { opacity: .85; }
+  .mile-pace-preview.pending { color: var(--muted); font-style: italic; }
 </style>
 </head>
 <body>
 <div class="app">
 
   <div class="header">
-    <div class="header-top"><div class="logo">PACE<span>TRACK</span></div></div>
+    <div class="header-top"><div class="logo">AVERAGE<span> PACE</span></div></div>
     <div class="subtitle">Real-time split calculator</div>
   </div>
 
@@ -264,8 +277,11 @@ const DISTANCES = Array.from({length: 12}, (_, i) => i + 2); // [2,3,...,13]
 const MINS = Array.from({length: 17}, (_, i) => i + 4); // 4–20
 const SECS = Array.from({length: 60}, (_, i) => i);     // 0–59
 
+// miles[] holds confirmed splits used for calculations
+// pending{} holds the in-progress drum values for the open card, not yet confirmed
 let miles = [];
 let openCardIdx = null;
+let pending = null; // { min, sec } — draft for the currently open card
 
 // ─── Drum builder ────────────────────────────────────────────────────────────
 function buildDrum(values, initialVal, onChange) {
@@ -362,11 +378,26 @@ function previewStr(m) {
   return `${m.min}:${String(m.sec).padStart(2,'0')}`;
 }
 
+function confirmMile(idx) {
+  if (!pending) return;
+  miles[idx] = { ...pending };
+  pending = null;
+  openCardIdx = null;
+  renderMiles();
+  renderResults();
+}
+
 function renderMiles() {
   const container = document.getElementById('mile-rows');
   container.innerHTML = '';
 
   miles.forEach((m, i) => {
+    const isOpen = openCardIdx === i;
+    // use pending draft for display if this card is open
+    const displayVal = (isOpen && pending) ? pending : m;
+    const isUnconfirmed = isOpen && pending &&
+      (pending.min !== m.min || pending.sec !== m.sec);
+
     const card = document.createElement('div');
     card.className = 'mile-card';
 
@@ -378,6 +409,7 @@ function renderMiles() {
     numEl.textContent = `Mile ${i + 1}`;
 
     const preview = document.createElement('div');
+    // show confirmed value in header always; pending shown inside drum area
     preview.className = 'mile-pace-preview';
     preview.textContent = `${previewStr(m)} /mi`;
 
@@ -392,19 +424,20 @@ function renderMiles() {
     card.appendChild(header);
 
     const drumWrap = document.createElement('div');
-    drumWrap.className = 'drum-wrap' + (openCardIdx === i ? ' open' : '');
+    drumWrap.className = 'drum-wrap' + (isOpen ? ' open' : '');
 
-    if (openCardIdx === i) {
+    if (isOpen) {
+      // init pending to current confirmed value when first opening
+      if (!pending) pending = { ...m };
+
       const minCol = document.createElement('div');
       minCol.className = 'drum-col';
       const minLbl = document.createElement('div');
       minLbl.className = 'drum-label';
       minLbl.textContent = 'min';
       minCol.appendChild(minLbl);
-      minCol.appendChild(buildDrum(MINS, m.min, val => {
-        miles[i].min = val;
-        card.querySelector('.mile-pace-preview').textContent = `${previewStr(miles[i])} /mi`;
-        renderResults();
+      minCol.appendChild(buildDrum(MINS, pending.min, val => {
+        pending.min = val;
       }));
 
       const colon = document.createElement('div');
@@ -417,22 +450,37 @@ function renderMiles() {
       secLbl.className = 'drum-label';
       secLbl.textContent = 'sec';
       secCol.appendChild(secLbl);
-      secCol.appendChild(buildDrum(SECS, m.sec, val => {
-        miles[i].sec = val;
-        card.querySelector('.mile-pace-preview').textContent = `${previewStr(miles[i])} /mi`;
-        renderResults();
+      secCol.appendChild(buildDrum(SECS, pending.sec, val => {
+        pending.sec = val;
       }));
 
       drumWrap.appendChild(minCol);
       drumWrap.appendChild(colon);
       drumWrap.appendChild(secCol);
+
+      // ── Confirm button ──
+      const confirmBtn = document.createElement('button');
+      confirmBtn.className = 'confirm-btn';
+      confirmBtn.innerHTML = `✓ &nbsp;Save Mile ${i + 1}`;
+      confirmBtn.addEventListener('click', e => { e.stopPropagation(); confirmMile(i); });
+      card.appendChild(drumWrap);
+      card.appendChild(confirmBtn);
+    } else {
+      card.appendChild(drumWrap);
     }
 
-    card.appendChild(drumWrap);
     header.addEventListener('click', () => {
-      openCardIdx = (openCardIdx === i) ? null : i;
+      if (openCardIdx === i) {
+        // closing without confirming — discard pending
+        openCardIdx = null;
+        pending = null;
+      } else {
+        openCardIdx = i;
+        pending = { ...miles[i] }; // seed pending from confirmed value
+      }
       renderMiles();
     });
+
     container.appendChild(card);
   });
 
@@ -445,16 +493,17 @@ function addMile() {
   const tSec = parseInt(document.getElementById('tgt-sec').value) || 0;
   miles.push({ min: tMin, sec: tSec });
   openCardIdx = miles.length - 1;
+  pending = { min: tMin, sec: tSec };
   renderMiles();
 }
 function deleteMile(idx) {
   miles.splice(idx, 1);
-  if (openCardIdx === idx) openCardIdx = null;
+  if (openCardIdx === idx) { openCardIdx = null; pending = null; }
   else if (openCardIdx > idx) openCardIdx--;
   renderMiles();
 }
 function clearAll() {
-  miles = []; openCardIdx = null; renderMiles();
+  miles = []; openCardIdx = null; pending = null; renderMiles();
 }
 
 // ─── Pace math ───────────────────────────────────────────────────────────────
@@ -500,7 +549,7 @@ function renderResults() {
   const valid = miles.filter(m => paceToSecs(m.min, m.sec) > 0);
 
   if (!valid.length) {
-    card.innerHTML = '<div class="no-data">Log your first mile<br>to see required pace</div>';
+    card.innerHTML = '<div class="no-data">Save your first mile<br>to see required pace</div>';
     return;
   }
 
